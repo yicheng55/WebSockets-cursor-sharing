@@ -6,6 +6,7 @@
         const messageBody = JSON.parse(webSocketMessage.data);
         const cursor = getOrCreateCursorFor(messageBody);
         cursor.style.transform = `translate(${messageBody.x}px, ${messageBody.y}px)`;
+        console.log('webSocketMessage:' + messageBody.x +'  y:' + messageBody.y );
     };        
     
     document.body.onmousemove = (evt) => {

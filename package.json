@@ -26,5 +26,6 @@
     "snowpack": "^3.5.9"
   },
   "dependencies": {
+    "ws": "^8.3.0"
   }
 }
