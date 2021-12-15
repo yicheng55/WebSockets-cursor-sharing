@@ -8,14 +8,22 @@
         cursor.style.transform = `translate(${messageBody.x}px, ${messageBody.y}px)`;
         console.log('webSocketMessage:' + messageBody.x +'  y:' + messageBody.y );
     };        
-    
+
     document.body.onmousemove = (evt) => {
         const messageBody = { x: evt.clientX, y: evt.clientY };
         ws.send(JSON.stringify(messageBody));
     };
         
     async function connectToServer() {    
-        const ws = new WebSocket('ws://localhost:7071/ws');
+        var url1  = document.URL;
+        var myURL = new URL(url1);
+        console.log(myURL.host);
+
+        var result = "ws://"+myURL.hostname+":7071/ws" ;
+        console.log(result);
+
+        const ws = new WebSocket(result);
+        // const ws = new WebSocket('ws://localhost:7071/ws');
         return new Promise((resolve, reject) => {
             const timer = setInterval(() => {
                 if(ws.readyState === 1) {
